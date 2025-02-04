@@ -53,13 +53,13 @@ classifier.add(Dense(output_dim=100, activation='relu'))
 classifier.add(Dropout(p=0.3))  # Dropout層，隨機丟棄一些神經元來避免過擬合
 classifier.add(Dense(output_dim=10, activation='softmax'))  # 輸出層，10個類別
 
-# 編譯模型：使用交叉熵損失函數
+# 編譯模型：選擇Adam優化器，使用交叉熵損失函數
 classifier.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
 # 訓練模型
 classifier.fit(x_train, y_train, batch_size=100, epochs=100)
 
-# 評估測試集上的表現
+# 評估模型在測試集上的表現
 score = classifier.evaluate(x_test, y_test)
 print(f"Test loss: {score[0]}")
 print(f"Test accuracy: {score[1]}")
